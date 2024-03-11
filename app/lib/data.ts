@@ -1,3 +1,4 @@
+//allows quries from database
 import { sql } from '@vercel/postgres';
 import {
   CustomerField,
@@ -32,6 +33,7 @@ export async function fetchRevenue() {
   }
 }
 
+//gets the latest 5 invoices
 export async function fetchLatestInvoices() {
   try {
     const data = await sql<LatestInvoiceRaw>`
@@ -64,6 +66,7 @@ export async function fetchCardData() {
          SUM(CASE WHEN status = 'pending' THEN amount ELSE 0 END) AS "pending"
          FROM invoices`;
 
+    //parallel data request
     const data = await Promise.all([
       invoiceCountPromise,
       customerCountPromise,
