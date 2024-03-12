@@ -100,6 +100,8 @@ export async function fetchFilteredInvoices(
   currentPage: number,
 ) {
   noStore();
+  //offset sets a skip count
+  //if on page 2, it will skip the first 6 and display the next 6 ..etc..
   const offset = (currentPage - 1) * ITEMS_PER_PAGE;
 
   try {
@@ -131,6 +133,7 @@ export async function fetchFilteredInvoices(
   }
 }
 
+//get how many pages there will be based how data and how much is displayed per page
 export async function fetchInvoicesPages(query: string) {
   noStore();
   try {
