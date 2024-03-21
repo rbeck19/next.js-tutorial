@@ -6,6 +6,12 @@ import { lusitana } from '@/app/ui/fonts';
 import { InvoicesTableSkeleton } from '@/app/ui/skeletons';
 import { Suspense } from 'react';
 import { fetchInvoicesPages } from '@/app/lib/data';
+import { Metadata } from 'next';
+
+//updates the tab title
+export const metadata: Metadata = {
+  title: 'Invoices',
+};
 
 //accept a searchParams as a prop in order to pass the current URL params to table
 export default async function Page({
